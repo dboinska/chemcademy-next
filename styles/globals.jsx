@@ -4,6 +4,7 @@ export const GlobalStyles = createGlobalStyle`
     :root {
   --chem-color-main: #284275;
   --chem-color-white: hsl(0, 0%, 100%);
+  --chem-color-light-gray: #dfdede;
 }
 
 ::selection {

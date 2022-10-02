@@ -5,6 +5,7 @@ export const GlobalStyles = createGlobalStyle`
   --chem-color-main: #284275;
   --chem-color-white: hsl(0, 0%, 100%);
   --chem-color-light-gray: #dfdede;
+  --chem-color-light-blue: #EBF3F7;
 }
 
 ::selection {

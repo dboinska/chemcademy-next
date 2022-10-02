@@ -1,7 +1,13 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
+import styled from 'styled-components';
+import Link from 'next/link';
 
+const Title = styled.h1`
+  color: var(--chem-color-main);
+  font-size: 5rem;
+`;
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -12,13 +18,14 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
+        <Title className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        </Title>
 
         <p className={styles.description}>
           Get started by editing <code className={styles.code}>pages/index.js</code>
         </p>
+        <Link href="/about">about</Link>
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>

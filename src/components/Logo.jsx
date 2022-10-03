@@ -2,18 +2,16 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const Logo = () => {
-  return (
-    <>
-      <Link href="/" className="light" passHref>
-        <StyledLogoContainer blue>
-          <Image src="/logobiale.png" alt="logo" width="48" height="46" />
-          chemcademy
-        </StyledLogoContainer>
-      </Link>
-    </>
-  );
-};
+import { MAX_SMALL_DEVICES } from '../../styles/constants';
+
+const Logo = () => (
+  <Link href="/" className="light" passHref>
+    <StyledLogoContainer blue>
+      <Image src="/logobiale.png" alt="logo" width="48" height="46" />
+      chemcademy
+    </StyledLogoContainer>
+  </Link>
+);
 
 const StyledLogoContainer = styled.a`
   font-weight: bold;
@@ -26,9 +24,9 @@ const StyledLogoContainer = styled.a`
   text-transform: uppercase;
   text-decoration: none;
 
-  @media screen and (max-width: 630px) {
+  /* ${MAX_SMALL_DEVICES} {
     flex-direction: column;
-  }
+  } */
 `;
 
 export default Logo;

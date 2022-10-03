@@ -4,6 +4,8 @@ import { address, courses, individual, contact } from './constants.js';
 import Logo from '../Logo';
 import Address from '../Address';
 
+import { MIN_LARGE_DEVICES } from '../../../styles/constants';
+
 const Footer = () => {
   return (
     <StyledFooter>
@@ -30,9 +32,9 @@ const Container = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  padding: ${props => (props.paddingTop ? '3rem 0 0 0' : '0 0 2rem 0')};
+  padding: ${props => (props.paddingTop ? '2rem 0 0 0' : '0 0 2rem 0')};
   flex-wrap: wrap;
-  @media screen and (min-width: 1200px) {
+  ${MIN_LARGE_DEVICES} {
     max-width: 1100px;
   }
   a {

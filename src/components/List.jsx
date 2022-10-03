@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { MIN_LARGE_DEVICES } from '../../styles/constants';
+
 import Link from 'next/link';
 const List = ({ children, items }) => {
   return (
@@ -33,7 +35,7 @@ export const StyledUl = styled.ul`
     font-weight: bold;
     text-align: left;
 
-    @media screen and (min-width: 1200px) {
+    ${MIN_LARGE_DEVICES} {
       margin-top: 1rem;
     }
   }

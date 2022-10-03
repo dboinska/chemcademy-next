@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 import Navbar from '../src/components/Navbar';
+import Footer from '../src/components/Footer/index';
 
 const Title = styled.h1`
   color: var(--chem-color-main);
@@ -70,6 +71,7 @@ export default function Home() {
           </a>
         </footer>
       </div>
+      <Footer />
     </>
   );
 }

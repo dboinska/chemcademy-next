@@ -5,9 +5,9 @@ export const GlobalStyles = createGlobalStyle`
   --chem-color-main: #284275;
   --chem-color-white: hsl(0, 0%, 100%);
   --chem-color-light-gray: #dfdede;
+  --chem-color-light-blue: #EBF3F7;
   --chem-color-transparent: transparent;
-  --chem-device-small: "630px";
-  --chem-device-medium: "800px";
+ 
   --chem-index-navbar: "999";
 }
 

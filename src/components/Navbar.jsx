@@ -5,6 +5,8 @@ import { FaBars } from 'react-icons/fa';
 
 import Logo from '../components/Logo';
 
+import { MAX_MEDIUM_DEVICES, MIN_MEDIUM_DEVICES } from '../../styles/constants';
+
 import routes from '../routes';
 
 const Navbar = () => {
@@ -31,7 +33,6 @@ const Navbar = () => {
   useEffect(() => {
     if (showLinks) {
       linksContainerRef.current.style.height = '100vh';
-
       document.body.style.overflow = 'hidden';
     } else {
       linksContainerRef.current.style.height = '0px';
@@ -39,7 +40,7 @@ const Navbar = () => {
     }
   }, [showLinks]);
   return (
-    <StyledNavbar className={colorChange ? 'navbar colorChange' : 'navbar'}>
+    <StyledNavbar colorChange={colorChange}>
       <div className="nav-center">
         <div className="nav-header">
           <Logo />
@@ -65,16 +66,13 @@ const Navbar = () => {
 };
 
 const StyledNavbar = styled.nav`
-  background-color: transparent;
+  background-color: ${props => (props.colorChange ? 'var(--chem-color-light-gray)' : 'var(--chem-color-transparent)')};
   display: flex;
   justify-content: space-between;
   position: fixed;
   width: 100%;
-  z-index: 999;
+  z-index: var(--chem-index-navbar);
   margin: 0 auto;
-  &.colorChange {
-    background-color: var(--chem-color-light-gray);
-  }
   li {
     list-style: none;
     display: block;
@@ -87,7 +85,7 @@ const StyledNavbar = styled.nav`
     padding: 1.2rem;
     transition: all 0.3s linear;
     display: inline-flex;
-    height: 100%;
+    /* height: 100%; */
     align-items: center;
     font-weight: 500;
     border-bottom: 1px solid transparent;
@@ -95,11 +93,12 @@ const StyledNavbar = styled.nav`
       border-bottom: 1px solid var(--chem-color-main);
     }
 
-    @media screen and (min-width: 800px) {
-      height: 100px;
+    ${MIN_MEDIUM_DEVICES} {
+      height: 90px;
     }
   }
   ul {
+    padding: 0;
     list-style-type: none;
   }
   .nav-header {
@@ -108,39 +107,45 @@ const StyledNavbar = styled.nav`
     justify-content: space-between;
     width: 100%;
 
-    @media screen and (min-width: 800px) {
+    ${MIN_MEDIUM_DEVICES} {
       width: auto;
     }
   }
   .nav-center {
     width: 100%;
-    @media screen and (min-width: 800px) {
+    ${MIN_MEDIUM_DEVICES} {
       height: 100px;
     }
   }
   .nav-toggle {
     font-size: 1.5rem;
-    color: var(--clr-primary-5);
     background: transparent;
     border-color: transparent;
     transition: var(--transition);
     cursor: pointer;
     margin: 0 1.2rem;
+
+    &:hover,
+    &:focus {
+      color: var(--chem-color-main);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--chem-color-main);
+      outline-offset: 4px;
+    }
   }
   .links-container {
     height: 0;
-    overflow: hidden;
-    transition: var(--transition);
+    transition: var(--chem-color-transition);
     background-color: var(--chem-color-white);
     a {
       text-align: center;
     }
-    @media screen and (max-width: 800px) {
+    ${MAX_MEDIUM_DEVICES} {
       background-color: var(--chem-color-light-gray);
+      overflow: hidden;
     }
-  }
-  .nav-toggle:hover {
-    color: var(--chem-color-main);
   }
 
   .show-container {
@@ -149,13 +154,15 @@ const StyledNavbar = styled.nav`
 
   .links-container {
     height: 0;
-    overflow: hidden;
     transition: var(--transition);
+    ${MAX_MEDIUM_DEVICES} {
+      overflow: hidden;
+    }
   }
   .show-container {
     height: 10rem;
   }
-  @media screen and (min-width: 800px) {
+  ${MIN_MEDIUM_DEVICES} {
     .nav-center {
       max-width: 1200px;
       margin: 0 auto;
@@ -168,7 +175,7 @@ const StyledNavbar = styled.nav`
       display: none;
     }
     .links-container {
-      height: auto !important;
+      height: auto;
       display: flex;
       align-items: center;
       background-color: transparent;

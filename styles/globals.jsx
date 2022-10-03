@@ -6,6 +6,9 @@ export const GlobalStyles = createGlobalStyle`
   --chem-color-white: hsl(0, 0%, 100%);
   --chem-color-light-gray: #dfdede;
   --chem-color-light-blue: #EBF3F7;
+  --chem-color-transparent: transparent;
+ 
+  --chem-index-navbar: "999";
 }
 
 ::selection {

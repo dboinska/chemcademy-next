@@ -12,6 +12,8 @@ export const GlobalStyles = createGlobalStyle`
   --chem-color-transparent: transparent;
 
   --chem-gradient-hero: linear-gradient(rgba(255, 254, 254, 0.3), rgba(255, 255, 255, 0.8));
+
+  --chem-font-main: 'Montserrat', sans-serif;
  
   --chem-index-navbar: 999;
 }

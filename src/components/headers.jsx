@@ -17,7 +17,7 @@ export const H1 = styled.h1`
   font-size: clamp(1.8rem, 3.5vw, 4rem);
 `;
 
-export const StyledH2 = styled.h2`
+export const H2 = styled.h2`
   color: var(--chem-color-main);
   margin: 0.1rem;
   text-transform: uppercase;
@@ -28,7 +28,7 @@ export const StyledH2 = styled.h2`
   }
 `;
 
-export const StyledH3 = styled.h3`
+export const H3 = styled.h3`
   color: var(--chem-color-dark);
   margin: 2rem 0 3rem;
   ${typography}

@@ -6,7 +6,7 @@ import { MIN_MEDIUM_DEVICES, MAX_SMALL_DEVICES } from '../../styles/constants';
 import { H1, H2, H3 } from '../components/headers';
 
 const Hero = () => (
-  <StyledApp>
+  <StyledHero>
     <LogoContainer>
       <Image src="/logobiale.png" alt="logo" width="92" height="88" />
       <H1>Chemcademy</H1>
@@ -18,10 +18,10 @@ const Hero = () => (
       <Link href="/"> kursy</Link>
       <Link href="/"> Konsultacje </Link>
     </LinksContainer>
-  </StyledApp>
+  </StyledHero>
 );
 
-const StyledApp = styled.div`
+const StyledHero = styled.div`
   background: var(--chem-gradient-hero), url('tlo.png') no-repeat center right fixed;
   min-height: 520px;
   height: 100vh;

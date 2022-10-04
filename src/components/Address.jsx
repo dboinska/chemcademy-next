@@ -5,9 +5,9 @@ import { StyledUl, StyledList } from './List';
 
 const Address = ({ children, items }) => {
   return (
-    <StyledUl>
+    <StyledUl as="div">
       <h2>{children}</h2>
-      <AddressStyledList>
+      <AddressStyledList as="div">
         <Link className="light" href={items.link} target={items.target} rel={items.rel}>
           <a>
             <span className="flex">

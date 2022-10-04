@@ -3,12 +3,17 @@ import { createGlobalStyle } from 'styled-components';
 export const GlobalStyles = createGlobalStyle`
     :root {
   --chem-color-main: #284275;
-  --chem-color-white: hsl(0, 0%, 100%);
+  --chem-color-white: #ffffff;
   --chem-color-light-gray: #dfdede;
   --chem-color-light-blue: #EBF3F7;
+  --chem-color-blue-gray: #57646d;
+  --chem-color-blue: #004cff;
+  --chem-color-dark: #000305;
   --chem-color-transparent: transparent;
+
+  --chem-gradient-hero: linear-gradient(rgba(255, 254, 254, 0.3), rgba(255, 255, 255, 0.8));
  
-  --chem-index-navbar: "999";
+  --chem-index-navbar: 999;
 }
 
 ::selection {

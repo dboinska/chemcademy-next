@@ -88,8 +88,10 @@ const StyledNavbar = styled.nav`
     /* height: 100%; */
     align-items: center;
     font-weight: 500;
-    border-bottom: 1px solid transparent;
-    &:hover {
+    border-bottom: 1px solid var(--chem-color-transparent);
+
+    &:hover,
+    &:focus {
       border-bottom: 1px solid var(--chem-color-main);
     }
 
@@ -119,9 +121,8 @@ const StyledNavbar = styled.nav`
   }
   .nav-toggle {
     font-size: 1.5rem;
-    background: transparent;
-    border-color: transparent;
-    transition: var(--transition);
+    background: var(--chem-color-transparent);
+    border-color: var(--chem-color-transparent);
     cursor: pointer;
     margin: 0 1.2rem;
 
@@ -137,7 +138,6 @@ const StyledNavbar = styled.nav`
   }
   .links-container {
     height: 0;
-    transition: var(--chem-color-transition);
     background-color: var(--chem-color-white);
     a {
       text-align: center;
@@ -154,7 +154,6 @@ const StyledNavbar = styled.nav`
 
   .links-container {
     height: 0;
-    transition: var(--transition);
     ${MAX_MEDIUM_DEVICES} {
       overflow: hidden;
     }
@@ -178,7 +177,7 @@ const StyledNavbar = styled.nav`
       height: auto;
       display: flex;
       align-items: center;
-      background-color: transparent;
+      background-color: var(--chem-color-transparent);
     }
     .links {
       display: flex;

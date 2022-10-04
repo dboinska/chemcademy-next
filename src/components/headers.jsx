@@ -9,7 +9,7 @@ export const H2 = ({ children }) => <StyledH2>{children}</StyledH2>;
 export const H3 = ({ children }) => <StyledH3>{children}</StyledH3>;
 
 const typography = css`
-  font-size: clamp(1.8rem, 3.5vw, 4rem);
+  font-size: clamp(1.6rem, 2vw, 2rem);
   text-align: center;
 `;
 

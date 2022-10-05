@@ -16,7 +16,10 @@ export const GlobalStyles = createGlobalStyle`
   --chem-font-main: 'Montserrat', sans-serif;
  
   --chem-index-navbar: 999;
+
+  --chem-width-wide: calc(1200px / 2 - 2rem);
 }
+
 
 ::selection {
   background-color: var(--chem-color-main);

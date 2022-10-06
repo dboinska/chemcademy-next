@@ -2,7 +2,7 @@ export const courses = [
   {
     id: 1,
     title: 'Kursy licealne',
-    img: '/static/students.jpg',
+    img: '/assets/students.jpg',
     alt: 'grupa uczniów',
     importants: [
       {
@@ -25,7 +25,7 @@ export const courses = [
   {
     id: 2,
     title: 'Kursy maturalne',
-    img: '/static/graduate.jpg',
+    img: '/assets/graduate.jpg',
 
     alt: 'uczniowie ',
     importants: [
@@ -50,7 +50,7 @@ export const courses = [
     id: 3,
 
     title: 'Kursy olimpijskie',
-    img: '/static/chemTable.jpg',
+    img: '/assets/chemTable.jpg',
     alt: 'tablica Mendelejewa',
     importants: [
       {
@@ -72,7 +72,7 @@ export const courses = [
   {
     id: 4,
     title: 'Korepetycje stacjonarne',
-    img: '/static/individual.jpg',
+    img: '/assets/individual.jpg',
 
     alt: 'nauka indywidualna',
     importants: [
@@ -96,7 +96,7 @@ export const courses = [
   {
     id: 5,
     title: 'Korepetycje zdalne',
-    img: '/static/online.jpg',
+    img: '/assets/online.jpg',
 
     alt: 'nauka online',
     importants: [
@@ -120,7 +120,7 @@ export const courses = [
   {
     id: 6,
     title: 'Konsultacje',
-    img: '/static/consultation.jpg',
+    img: '/assets/consultation.jpg',
     alt: 'studiowanie',
     importants: [
       {

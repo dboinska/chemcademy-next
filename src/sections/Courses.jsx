@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Course from './Course';
+import Course from '../components/Course';
 
 import { MIN_LARGE_DEVICES } from '../../styles/constants';
 

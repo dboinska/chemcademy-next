@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 import Navbar from '../src/components/Navbar';
-import Courses from '../src/components/Courses';
+import Courses from '../src/sections/Courses';
 import Footer from '../src/components/Footer';
 import Hero from '../src/sections/Hero';
 

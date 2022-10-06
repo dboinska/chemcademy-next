@@ -6,6 +6,7 @@ export const GlobalStyles = createGlobalStyle`
   --chem-color-white: #ffffff;
   --chem-color-light-gray: #dfdede;
   --chem-color-light-blue: #EBF3F7;
+  --chem-color-white-blue: #f9fbfc;
   --chem-color-blue-gray: #57646d;
   --chem-color-blue: #004cff;
   --chem-color-dark: #000305;

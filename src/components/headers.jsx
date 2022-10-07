@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { MAX_SMALL_DEVICES } from '../../styles/constants';
+import { MAX_SMALL_DEVICES, MAX_LARGE_DEVICES } from '../../styles/constants';
 
 const typography = css`
   font-size: clamp(1.6rem, 2vw, 2rem);
@@ -33,4 +33,23 @@ export const H3 = styled.h3`
   margin: 2rem 0 3rem;
   ${typography}
   font-weight: 300;
+`;
+
+export const H2Section = ({ children, margin }) => {
+  return <StyledH2 margin={margin}>{children}</StyledH2>;
+};
+
+const StyledH2 = styled(H2)`
+  text-align: left;
+  border-bottom: 2px solid var(--chem-color-main);
+  margin: ${({ margin }) => (margin ? margin : '1rem auto')};
+  ${MAX_LARGE_DEVICES} {
+    max-width: 1100px;
+  }
+`;
+
+export const H3Badges = styled.h3`
+  color: var(--chem-color-main);
+  text-transform: uppercase;
+  margin-left: 1rem;
 `;

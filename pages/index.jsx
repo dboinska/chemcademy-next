@@ -5,8 +5,11 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 import Navbar from '../src/components/Navbar';
+import Badges from '../src/components/Badges';
 import Footer from '../src/components/Footer';
 import Hero from '../src/sections/Hero';
+
+import { badges } from '../data/badges';
 
 const Title = styled.h1`
   color: var(--chem-color-main);
@@ -73,6 +76,9 @@ export default function Home() {
         </footer>
       </div>
       <Hero />
+      <Badges items={badges} color="#010406">
+        Wyróżnia mnie:
+      </Badges>
       <Footer />
     </>
   );

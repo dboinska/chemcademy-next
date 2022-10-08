@@ -1,24 +1,27 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import styles from '../styles/Home.module.css';
-import styled from 'styled-components';
 import Link from 'next/link';
+import styled from 'styled-components';
 
-import Navbar from '../src/components/Navbar';
-import Courses from '../src/sections/Courses';
-import Footer from '../src/components/Footer';
 import Hero from '../src/sections/Hero';
+import Section from '../src/sections/Section';
+import Courses from '../src/sections/Courses';
 
+import { about, classroom, online } from '../data/section.js';
 import { courses } from '../data/courses.js';
 
 export default function Home() {
   return (
     <>
-      <Navbar />
-
       <Hero />
+      <Section item={about} imgPosition="right">
+        Nauczanie z pasji
+      </Section>
       <Courses items={courses} />
-      <Footer />
+      <Section item={classroom}>Nauka w dobrej atmosferze</Section>
+      <Section item={online} imgPosition="right">
+        Lekcje online
+      </Section>
     </>
   );
 }

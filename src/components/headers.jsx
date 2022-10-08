@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { MAX_SMALL_DEVICES } from '../../styles/constants';
+import { MAX_SMALL_DEVICES, MAX_LARGE_DEVICES } from '../../styles/constants';
 
 const typography = css`
   font-size: clamp(1.6rem, 2vw, 2rem);
@@ -41,4 +41,19 @@ export const H2Courses = styled(H2)`
   font-size: 1.2rem;
   margin: 0;
   padding: 1rem 0.4rem;
+
+export const H2Section = styled(H2)`
+  text-align: left;
+  border-bottom: 2px solid var(--chem-color-main);
+  margin: ${({ margin }) => (margin ? margin : '1rem auto')};
+
+  ${MAX_LARGE_DEVICES} {
+    max-width: 1100px;
+  }
+`;
+
+export const H3Section = styled.h3`
+  color: var(--chem-color-main);
+  text-transform: uppercase;
+  padding: 1rem 0;
 `;

@@ -1,9 +1,9 @@
 import books from '../public/assets/books.png';
-import people from '../public/assets//people.png';
-import remote from '../public/assets//remote.png';
-import badge from '../public/assets//badge.png';
-import money from '../public/assets//money.png';
-import video from '../public/assets//video.png';
+import people from '../public/assets/people.png';
+import remote from '../public/assets/remote.png';
+import badge from '../public/assets/badge.png';
+import money from '../public/assets/money.png';
+import video from '../public/assets/video.png';
 
 export const badges = [
   {

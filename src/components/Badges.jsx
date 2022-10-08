@@ -6,9 +6,9 @@ import { H3Badges } from '../components/headers';
 const Badges = ({ items, children, color, textAlign, fontWeight }) => {
   return (
     <>
-      <StyledDiv>
+      <StyledContainer>
         <H2Section>{children}</H2Section>
-      </StyledDiv>
+      </StyledContainer>
       <StyledOffered color={color} textAlign={textAlign} fontWeight={fontWeight}>
         {items.map(item => (
           <div key={item.id}>
@@ -24,7 +24,7 @@ const Badges = ({ items, children, color, textAlign, fontWeight }) => {
   );
 };
 
-const StyledDiv = styled.div`
+const StyledContainer = styled.div`
   max-width: 80%;
   margin: 0 auto;
 `;

@@ -38,7 +38,7 @@ const StyledCourse = styled.div`
     background-color: var(--chem-color-white-blue);
     position: absolute;
     bottom: 0;
-    height: 140px;
+    height: 150px;
     align-items: center;
     border-top: 2px solid var(--chem-color-light-blue);
     font-weight: 400;

@@ -35,6 +35,13 @@ export const H3 = styled.h3`
   font-weight: 300;
 `;
 
+export const H2Courses = styled(H2)`
+  background-color: var(--chem-color-main);
+  color: var(--chem-color-white);
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 1rem 0.4rem;
+
 export const H2Section = styled(H2)`
   text-align: left;
   border-bottom: 2px solid var(--chem-color-main);

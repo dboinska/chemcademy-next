@@ -35,11 +35,7 @@ export const H3 = styled.h3`
   font-weight: 300;
 `;
 
-export const H2Section = ({ children, margin }) => {
-  return <StyledH2 margin={margin}>{children}</StyledH2>;
-};
-
-const StyledH2 = styled(H2)`
+export const H2Section = styled(H2)`
   text-align: left;
   border-bottom: 2px solid var(--chem-color-main);
   margin: ${({ margin }) => (margin ? margin : '1rem auto')};

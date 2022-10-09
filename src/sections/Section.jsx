@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components/';
 import Image from 'next/image';
 import { H2Section, H3Section } from '../components/headers';
-import { MAX_SMALL_DEVICES, MIN_LARGE_DEVICES } from '../../styles/constants';
+import { MAX_SMALL_DEVICES, MIN_MEDIUM_DEVICES, MIN_LARGE_DEVICES } from '../../styles/constants';
 
-const Section = ({ children, item, imgPosition = 'left', color, content, margin }) => {
+const Section = ({ children, item, imgPosition = 'left', color, content, margin, height, width, maxWidthOnSmall }) => {
   return (
     <StyledSection color={color} content={content} margin={margin}>
       <StyledContainer imgPosition={imgPosition}>
@@ -13,7 +13,7 @@ const Section = ({ children, item, imgPosition = 'left', color, content, margin 
         {item.subDesc ? <p>{item.subDesc}</p> : ''}
         {item.warning ? <p className="warning">{item.warning}</p> : ''}
       </StyledContainer>
-      <StyledImageContainer imgPosition={imgPosition}>
+      <StyledImageContainer imgPosition={imgPosition} height={height} width={width} maxWidthOnSmall={maxWidthOnSmall}>
         <Image src={item.img} alt={item.alt} layout="fill" objectFit="cover"></Image>
       </StyledImageContainer>
     </StyledSection>
@@ -35,6 +35,7 @@ const StyledSection = styled.section`
   flex-wrap: wrap;
   padding: 1rem 0;
   background-color: ${({ color }) => (color ? color : 'var(--chem-color-transparent)')};
+  max-width: calc(100vw - 2rem);
 
   ${MIN_LARGE_DEVICES} {
     margin: ${({ margin }) => (margin ? margin : '3rem 0')};
@@ -71,7 +72,7 @@ const StyledSection = styled.section`
 const StyledContainer = styled.div`
   ${divStyles}
   order: 0;
-  ${MIN_LARGE_DEVICES} {
+  ${MIN_MEDIUM_DEVICES} {
     order: ${({ imgPosition }) => (imgPosition === 'left' ? 1 : 0)};
   }
 `;
@@ -81,13 +82,16 @@ const StyledImageContainer = styled.div`
   order: 1;
   position: relative;
   width: var(--chem-width-wide);
-  height: 378px;
+  height: ${({ height }) => (height ? height : '378px')};
+  width: ${({ width }) => (width ? width : '567px')};
 
   ${MAX_SMALL_DEVICES} {
-    height: 220px;
+    min-height: 220px;
+    max-height: 270px;
+    max-width: ${({ maxWidthOnSmall }) => (maxWidthOnSmall ? maxWidthOnSmall : '335px')};
   }
 
-  ${MIN_LARGE_DEVICES} {
+  ${MIN_MEDIUM_DEVICES} {
     order: ${({ imgPosition }) => (imgPosition === 'left' ? 0 : 1)};
   }
 `;

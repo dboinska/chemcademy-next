@@ -11,7 +11,7 @@ const routes = [
   },
   {
     id: 3,
-    url: '/agenda',
+    url: '/schedule',
     text: 'terminarz',
   },
   {

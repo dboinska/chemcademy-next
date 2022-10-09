@@ -41,6 +41,7 @@ export const H2Courses = styled(H2)`
   font-size: 1.2rem;
   margin: 0;
   padding: 1rem 0.4rem;
+`;
 
 export const H2Section = styled(H2)`
   text-align: left;
@@ -50,6 +51,13 @@ export const H2Section = styled(H2)`
   ${MAX_LARGE_DEVICES} {
     max-width: 1100px;
   }
+`;
+
+
+export const H3Badges = styled.h3`
+  color: var(--chem-color-main);
+  text-transform: uppercase;
+  margin-left: 1rem;
 `;
 
 export const H3Section = styled.h3`

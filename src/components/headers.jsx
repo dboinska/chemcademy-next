@@ -19,12 +19,12 @@ export const H1 = styled.h1`
 
 export const H2 = styled.h2`
   color: var(--chem-color-main);
-  margin: 0.1rem;
+  margin: ${({ margin }) => (margin ? margin : '0.1rem ')};
   text-transform: uppercase;
   ${typography}
 
   ${MAX_SMALL_DEVICES} {
-    margin: 0 1rem;
+    margin: ${({ margin }) => (margin ? margin : ' 0 1rem')};
   }
 `;
 
@@ -52,7 +52,6 @@ export const H2Section = styled(H2)`
     max-width: 1100px;
   }
 `;
-
 
 export const H3Badges = styled.h3`
   color: var(--chem-color-main);

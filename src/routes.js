@@ -6,7 +6,7 @@ const routes = [
   },
   {
     id: 2,
-    url: '/offer',
+    url: '/priceList',
     text: 'oferta',
   },
   {

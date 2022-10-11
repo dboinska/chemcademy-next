@@ -46,6 +46,13 @@ const StyledOffered = styled.section`
       align-items: center;
     }
 
+    span {
+      min-height: 58px;
+      min-width: 58px;
+      max-height: 58px;
+      max-width: 58px !important;
+    }
+
     p {
       color: ${({ color }) => (color ? color : 'var(--chem-color-main)')};
       text-align: ${({ textAlign }) => (textAlign ? textAlign : 'left')};

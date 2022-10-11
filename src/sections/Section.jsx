@@ -36,12 +36,11 @@ const StyledSection = styled.section`
   padding: 1rem 0;
   background-color: ${({ color }) => (color ? color : 'var(--chem-color-transparent)')};
   max-width: calc(100vw - 2rem);
-
+  
   ${MIN_LARGE_DEVICES} {
     margin: ${({ margin }) => (margin ? margin : '3rem 0')};
     min-width: 1100px;
   }
-
   p {
     margin: 1rem 0;
     line-height: 1.4;
@@ -54,7 +53,6 @@ const StyledSection = styled.section`
       border-radius: 10px;
     }
   }
-
   a {
     color: var(--chem-color-white);
     text-decoration: none;

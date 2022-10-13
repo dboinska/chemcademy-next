@@ -73,3 +73,21 @@ export const H3Question = styled.h3`
     text-align: left;
   }
 `;
+
+export const H3Pricing = styled.h3`
+  margin: 1rem;
+  span {
+    color: var(--chem-color-blue);
+    font-size: 1.6rem;
+  }
+`;
+
+export const H5Pricing = styled.h5`
+  font-weight: 400;
+  font-size: 1rem;
+  margin: 1rem 0;
+
+  span {
+    font-weight: bold;
+  }
+`;

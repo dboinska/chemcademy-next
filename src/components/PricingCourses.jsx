@@ -41,7 +41,7 @@ const StyledOffer = styled.div`
 
   .option {
     width: 300px;
-    border: 3px solid var(----chem-color-light-blue);
+    border: 3px solid var(--chem-color-light-blue);
     border-radius: 12px;
     padding: 1rem 0;
     min-height: 600px;

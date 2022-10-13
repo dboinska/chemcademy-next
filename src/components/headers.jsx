@@ -64,3 +64,12 @@ export const H3Section = styled.h3`
   text-transform: uppercase;
   padding: 1rem 0;
 `;
+
+export const H3Question = styled.h3`
+  padding: 0 0.6rem;
+
+  ${MAX_LARGE_DEVICES} {
+    padding-left: 0.2rem;
+    text-align: left;
+  }
+`;

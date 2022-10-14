@@ -47,6 +47,7 @@ export const StyledList = styled.li`
   list-style: none;
   svg {
     margin-right: 0.4rem;
+    display: inline-block;
   }
   a {
     text-decoration: none;

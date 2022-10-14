@@ -36,6 +36,7 @@ const StyledSection = styled.section`
   padding: 1rem 0;
   background-color: ${({ color }) => (color ? color : 'var(--chem-color-transparent)')};
   max-width: calc(100vw - 2rem);
+
   ${MIN_LARGE_DEVICES} {
     margin: ${({ margin }) => (margin ? margin : '3rem 0')};
     min-width: 1100px;
@@ -81,11 +82,13 @@ const StyledImageContainer = styled.div`
   width: var(--chem-width-wide);
   height: ${({ height }) => (height ? height : '378px')};
   width: ${({ width }) => (width ? width : '567px')};
+
   ${MAX_SMALL_DEVICES} {
     min-height: 220px;
     max-height: 270px;
     max-width: ${({ maxWidthOnSmall }) => (maxWidthOnSmall ? maxWidthOnSmall : '335px')};
   }
+
   ${MIN_MEDIUM_DEVICES} {
     order: ${({ imgPosition }) => (imgPosition === 'left' ? 0 : 1)};
   }

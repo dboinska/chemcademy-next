@@ -36,7 +36,7 @@ const StyledSection = styled.section`
   padding: 1rem 0;
   background-color: ${({ color }) => (color ? color : 'var(--chem-color-transparent)')};
   max-width: calc(100vw - 2rem);
-  
+
   ${MIN_LARGE_DEVICES} {
     margin: ${({ margin }) => (margin ? margin : '3rem 0')};
     min-width: 1100px;

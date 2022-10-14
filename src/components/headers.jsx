@@ -19,12 +19,12 @@ export const H1 = styled.h1`
 
 export const H2 = styled.h2`
   color: var(--chem-color-main);
-  margin: 0.1rem;
+  margin: ${({ margin }) => (margin ? margin : '0.1rem ')};
   text-transform: uppercase;
   ${typography}
 
   ${MAX_SMALL_DEVICES} {
-    margin: 0 1rem;
+    margin: ${({ margin }) => (margin ? margin : ' 0 1rem')};
   }
 `;
 
@@ -53,7 +53,6 @@ export const H2Section = styled(H2)`
   }
 `;
 
-
 export const H3Badges = styled.h3`
   color: var(--chem-color-main);
   text-transform: uppercase;
@@ -64,4 +63,31 @@ export const H3Section = styled.h3`
   color: var(--chem-color-main);
   text-transform: uppercase;
   padding: 1rem 0;
+`;
+
+export const H3Question = styled.h3`
+  padding: 0 0.6rem;
+
+  ${MAX_LARGE_DEVICES} {
+    padding-left: 0.2rem;
+    text-align: left;
+  }
+`;
+
+export const H3Pricing = styled.h3`
+  margin: 1rem;
+  span {
+    color: var(--chem-color-blue);
+    font-size: 1.6rem;
+  }
+`;
+
+export const H5Pricing = styled.h5`
+  font-weight: 400;
+  font-size: 1rem;
+  margin: 1rem 0;
+
+  span {
+    font-weight: bold;
+  }
 `;

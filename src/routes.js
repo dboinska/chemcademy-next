@@ -1,22 +1,22 @@
 const routes = [
   {
     id: 1,
-    url: '/about',
+    url: '/o-mnie',
     text: 'o mnie',
   },
   {
     id: 2,
-    url: '/priceList',
+    url: '/cennik',
     text: 'oferta',
   },
   {
     id: 3,
-    url: '/schedule',
+    url: '/terminarz',
     text: 'terminarz',
   },
   {
     id: 4,
-    url: '/contact',
+    url: '/kontakt',
     text: 'kontakt',
   },
 ];

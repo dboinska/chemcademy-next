@@ -16,7 +16,7 @@ export default function Schedule() {
     <>
       <SEO
         url="terminarz"
-        title="Terminarz zajęć | Chemcademy"
+        title="Terminarz zajęć"
         description="Zapraszam do zapoznania się z terminarzem moich kursów."
       />
       <Container>

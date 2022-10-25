@@ -11,7 +11,7 @@ export default function Contact() {
     <>
       <SEO
         url="kontakt"
-        title="kontakt | Chemcademy"
+        title="kontakt"
         description="Zapraszam do kontaktu w celu uzyskania konkretnych informacji oraz ustalenia najbardziej efektywnej formy zajęć."
       />
       <Container>

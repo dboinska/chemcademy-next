@@ -1,5 +1,5 @@
 const settings = {
-  rootUrl: 'http://localhost:3000',
+  rootUrl: process.env.NEXT_PUBLIC_HOST,
   title: 'Chemcademy',
   description: 'Kursy maturalne i licealne z chemii, Tomasz Boinski.',
   social: {

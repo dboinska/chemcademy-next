@@ -12,7 +12,7 @@ export default function About() {
     <>
       <SEO
         url="o-mnie"
-        title="O mnie | Chemcademy"
+        title="O mnie"
         description="Dr inż. Tomasz Boinski, założyciel firmy Chemcademy. Korepetytor z pasją do nauczania oraz licznymi sukcesami dydaktycznymi."
       />
       <Container>

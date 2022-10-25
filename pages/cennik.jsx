@@ -25,7 +25,7 @@ const PriceList = () => {
     <>
       <SEO
         url="cennik"
-        title="Cennik | Chemcademy"
+        title="Cennik"
         description="Cennik realizowanych kursów oraz zajęć indywidualnych wraz dostępnymi okresami rozliczeniowymi."
       />
       <Container>

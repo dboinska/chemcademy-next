@@ -1,5 +1,3 @@
-import Head from 'next/head';
-import styled from 'styled-components';
 import SEO from '../src/components/SEO';
 import Section from '../src/sections/Section';
 

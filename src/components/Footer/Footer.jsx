@@ -4,7 +4,7 @@ import { address, courses, individual, contact } from './constants.js';
 import Logo from '../Logo';
 import Address from '../Address';
 
-import { MIN_LARGE_DEVICES } from '../../../styles/constants';
+import { MIN_LARGE_DEVICES, MIN_MEDIUM_DEVICES } from '../../../styles/constants';
 
 const Footer = () => {
   return (
@@ -24,7 +24,10 @@ const Footer = () => {
 
 const StyledFooter = styled.footer`
   background-color: var(--chem-color-main);
-  padding: 2rem;
+  padding: 1.2rem;
+  ${MIN_MEDIUM_DEVICES} {
+    padding: 2rem;
+  }
 `;
 
 const Container = styled.div`
@@ -34,6 +37,9 @@ const Container = styled.div`
   justify-content: space-between;
   padding: ${props => (props.paddingTop ? '2rem 0 0 0' : '0 0 2rem 0')};
   flex-wrap: wrap;
+  ${MIN_MEDIUM_DEVICES} {
+    max-width: 720px;
+  }
   ${MIN_LARGE_DEVICES} {
     max-width: 1100px;
   }

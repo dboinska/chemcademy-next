@@ -1,4 +1,3 @@
-import React from 'react';
 import Head from 'next/head';
 import settings from '../../settings/settings-development';
 
@@ -6,23 +5,14 @@ const socialTags = ({
   canonicalURL,
   title = settings.title,
   description = settings.description,
-  image = settings.image,
+  image,
   createdAt,
   updatedAt,
 }) => {
   const metaTags = [
     { name: 'twitter:card', content: 'summary_large_image' },
-    {
-      name: 'twitter:site',
-      content: settings && settings.meta && settings.meta.social && settings.meta.social.twitter,
-      // content: settings?.meta?.social?.twitter
-    },
     { name: 'twitter:title', content: title },
     { name: 'twitter:description', content: description },
-    {
-      name: 'twitter:creator',
-      content: settings && settings.meta && settings.meta.social && settings.meta.social.twitter,
-    },
     { name: 'twitter:image:src', content: image },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'og:title', content: title },
@@ -30,10 +20,6 @@ const socialTags = ({
     { name: 'og:url', content: canonicalURL },
     { name: 'og:image', content: image },
     { name: 'og:description', content: description },
-    {
-      name: 'og:site_name',
-      content: settings && settings.meta && settings.meta.title,
-    },
     {
       name: 'og:published_time',
       content: createdAt || new Date().toISOString(),
@@ -47,19 +33,22 @@ const socialTags = ({
   return metaTags;
 };
 
-const SEO = ({ title = settings.title, description = settings.description, image = settings.social.image, url }) => {
+const SEO = ({ title, description = settings.description, image = settings.social.image, url }) => {
   const HOST = process.env.NEXT_PUBLIC_HOST;
-  const canonicalURL = `${HOST}/${url}`;
+  const canonicalURL = url ? `${HOST}/${url}` : HOST;
+  const metaTitle = title ? `${title} | Chemcademy Tomasz Boinski` : 'Chemcademy Tomasz Boinski';
+  const metaImage = `${HOST}/${image}`;
+  const metaBackground = `${HOST}/tlo.jpg`;
 
   return (
     <Head>
-      <title>{title} | Chemcademy Tomasz Boinski</title>
+      <title>{metaTitle}</title>
       <meta name="description" content={description} />
-      <meta itemprop="name" content={title} />
+      <meta itemprop="name" content={metaTitle} />
       <meta itemprop="description" content={description} />
-      <meta itemprop="image" content={image} />
+      <meta itemprop="image" content={metaImage} />
 
-      {socialTags(canonicalURL, title, description, image).map(({ name, content }) => {
+      {socialTags({ canonicalURL, title: metaTitle, description, image: metaImage }).map(({ name, content }) => {
         return <meta key={name} name={name} content={content} />;
       })}
       <script
@@ -68,10 +57,10 @@ const SEO = ({ title = settings.title, description = settings.description, image
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'LocalBusiness',
-            name: 'Chemcademy Tomasz Boinski',
+            name: metaTitle,
             url: canonicalURL,
-            logo: '/logobiale.png',
-            image: '/tło.jpg',
+            logo: metaImage,
+            image: metaBackground,
             hasMap: 'https://goo.gl/maps/cGy6atdyyN7My36QA',
             telephone: '731 026 396',
             email: 'tboinski@yahoo.com',

@@ -15,11 +15,7 @@ import SEO from '../src/components/SEO';
 export default function Home() {
   return (
     <>
-      <SEO
-        url=""
-        title=" Chemcademy"
-        description="Kompleksowe kursy chemiczne na każdym poziomie oraz spersonalizowane zajęcia indywidualne. Nauczanie online i stacjonarne ze stałym kontaktem z nauczycielem. Profesjonalne przygotowanie do zajęć, matur i olimpiad chemicznych."
-      />
+      <SEO description="Kompleksowe kursy chemiczne na każdym poziomie oraz spersonalizowane zajęcia indywidualne. Nauczanie online i stacjonarne ze stałym kontaktem z nauczycielem. Profesjonalne przygotowanie do zajęć, matur i olimpiad chemicznych." />
       <Hero />
       <Section item={about} imgPosition="right">
         Nauczanie z pasji

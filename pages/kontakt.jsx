@@ -11,7 +11,7 @@ export default function Contact() {
     <>
       <SEO
         url="kontakt"
-        title="kontakt"
+        title="Kontakt"
         description="Zapraszam do kontaktu w celu uzyskania konkretnych informacji oraz ustalenia najbardziej efektywnej formy zajęć."
       />
       <Container>
@@ -28,9 +28,9 @@ export default function Contact() {
               width="100%"
               height="100%"
               style={{ border: 0 }}
-              allowfullscreen=""
+              allowFullScreen=""
               loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
+              referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
         </ContactSection>

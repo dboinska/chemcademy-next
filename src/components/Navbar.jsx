@@ -7,6 +7,8 @@ import Logo from '../components/Logo';
 
 import { MAX_MEDIUM_DEVICES, MIN_MEDIUM_DEVICES } from '../../styles/constants';
 
+import { useRouter } from 'next/router';
+
 import routes from '../routes';
 
 const Navbar = () => {
@@ -16,6 +18,8 @@ const Navbar = () => {
   const toggleLinks = () => {
     setShowLinks(!showLinks);
   };
+  const { asPath } = useRouter();
+  const currentPath = useRef(asPath);
 
   const [colorChange, setColorchange] = useState(false);
 
@@ -31,14 +35,19 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    if (showLinks) {
+    const pathChanged = currentPath.current !== asPath;
+
+    if (showLinks && !pathChanged) {
       linksContainerRef.current.style.height = '100vh';
       document.body.style.overflow = 'hidden';
     } else {
       linksContainerRef.current.style.height = '0px';
       document.body.style.overflow = 'unset';
     }
-  }, [showLinks]);
+    console.log(asPath);
+    currentPath.current = asPath;
+  }, [showLinks, asPath, currentPath]);
+
   return (
     <StyledNavbar colorChange={colorChange}>
       <div className="nav-center">
@@ -49,7 +58,7 @@ const Navbar = () => {
           </button>
         </div>
         <div className="links-container" ref={linksContainerRef}>
-          <ul className="links" ref={linksRef}>
+          <ul className="links" ref={linksRef} onClick={toggleLinks}>
             {routes.map(link => {
               const { id, url, text } = link;
               return (

@@ -30,7 +30,7 @@ export const H2 = styled.h2`
 
 export const H3 = styled.h3`
   color: var(--chem-color-dark);
-  margin: 2rem 0 3rem;
+  margin: 2rem 0;
   ${typography}
   font-weight: 300;
 `;
@@ -60,13 +60,13 @@ export const H3Badges = styled.h3`
 `;
 
 export const H3Section = styled.h3`
-  color: var(--chem-color-main);
+  color: var(--chem-color-blue);
   text-transform: uppercase;
   padding: 1rem 0;
 `;
 
 export const H3Question = styled.h3`
-  padding: 0 0.6rem;
+  padding: 0 0.8rem;
 
   ${MAX_LARGE_DEVICES} {
     padding-left: 0.2rem;

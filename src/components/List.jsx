@@ -25,7 +25,12 @@ export const StyledUl = styled.ul`
   flex-direction: column;
   color: var(--chem-color-light-blue);
   padding: 1rem;
-  max-width: 340px;
+  width: 340px;
+
+  ${MIN_LARGE_DEVICES} {
+    width: auto;
+    max-width: 340px;
+  }
 
   h2 {
     color: var(--chem-color-light-blue);
@@ -45,6 +50,7 @@ export const StyledList = styled.li`
   margin: 6px;
   font-size: 0.9rem;
   list-style: none;
+
   svg {
     margin-right: 0.4rem;
     display: inline-block;

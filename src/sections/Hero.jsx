@@ -80,7 +80,7 @@ const LinksContainer = styled.div`
     ${MAX_SMALL_DEVICES} {
       width: 100%;
       text-align: center;
-      margin: 1rem 0;
+      margin: 0.5rem 0;
     }
   }
 

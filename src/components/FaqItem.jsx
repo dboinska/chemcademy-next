@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { IoIosArrowDown } from 'react-icons/io';
 import { H3Question } from './headers';
-import { MAX_LARGE_DEVICES, MIN_LARGE_DEVICES } from '../../styles/constants';
+import { MIN_LARGE_DEVICES } from '../../styles/constants';
 
 const FaqItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);

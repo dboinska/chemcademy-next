@@ -1,7 +1,3 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
-
 import Hero from '../src/sections/Hero';
 import Section from '../src/sections/Section';
 import Courses from '../src/sections/Courses';

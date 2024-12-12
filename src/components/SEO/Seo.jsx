@@ -44,9 +44,9 @@ const SEO = ({ title, description = settings.description, image = settings.socia
     <Head>
       <title>{metaTitle}</title>
       <meta name="description" content={description} />
-      <meta itemprop="name" content={metaTitle} />
-      <meta itemprop="description" content={description} />
-      <meta itemprop="image" content={metaImage} />
+      <meta itemProp="name" content={metaTitle} />
+      <meta itemProp="description" content={description} />
+      <meta itemProp="image" content={metaImage} />
 
       {socialTags({ canonicalURL, title: metaTitle, description, image: metaImage }).map(({ name, content }) => {
         return <meta key={name} name={name} content={content} />;

@@ -62,7 +62,7 @@ export const H3Badges = styled.h3`
 export const H3Section = styled.h3`
   color: var(--chem-color-blue);
   text-transform: uppercase;
-  padding: 1rem 0;
+  padding: ${({ padding }) => (padding ? padding : '1rem 0')};
 `;
 
 export const H3Question = styled.h3`

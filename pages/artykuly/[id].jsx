@@ -130,6 +130,7 @@ const richTextOptions = {
           <RichTextImageWrapper $size={imageSize}>
             <RichTextImage src={`https:${file.url}`} alt={title || 'Article image'} $size={imageSize} />
           </RichTextImageWrapper>
+          {title && <ImageLabel>{title}</ImageLabel>}
         </div>
       );
     },
@@ -295,6 +296,15 @@ const RichTextImage = styled.img`
   @media (max-width: 768px) {
     max-width: 100%;
   }
+`;
+
+const ImageLabel = styled.label`
+  display: block;
+  text-align: center;
+  color: var(--chem-color-blue-gray);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  font-style: italic;
 `;
 
 const RichTextParagraph = styled.p`

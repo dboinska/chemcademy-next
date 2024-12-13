@@ -11,11 +11,16 @@ const routes = [
   },
   {
     id: 3,
+    url: '/artykuly',
+    text: 'artykuły',
+  },
+  {
+    id: 4,
     url: '/terminarz',
     text: 'terminarz',
   },
   {
-    id: 4,
+    id: 5,
     url: '/kontakt',
     text: 'kontakt',
   },

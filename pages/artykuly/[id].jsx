@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 import 'katex/dist/katex.min.css';
-import { BlockMath } from 'react-katex';
+import { BlockMath, InlineMath } from 'react-katex';
 import SEO from '../../src/components/SEO';
 import Container from '../../src/components/Container';
 import { H2Section } from '../../src/components/headers';
@@ -86,16 +86,55 @@ const richTextOptions = {
   },
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, children) => {
+      const processText = text => {
+        if (!text) return text;
+
+        const blockParts = text.split(/(\$\$[^$]*?\$\$)/);
+        const processedBlock = blockParts.map((part, index) => {
+          if (part.startsWith('$$') && part.endsWith('$$')) {
+            const mathContent = part.slice(2, -2).trim();
+            return (
+              <EquationBlock key={`block-${index}`}>
+                <BlockMath math={mathContent} />
+              </EquationBlock>
+            );
+          }
+          if (!part.includes('$$')) {
+            const inlineParts = part.split(/(\$[^$]*?\$)/);
+            return inlineParts.map((inlinePart, inlineIndex) => {
+              if (inlinePart.startsWith('$') && inlinePart.endsWith('$')) {
+                const inlineMathContent = inlinePart.slice(1, -1).trim();
+                return (
+                  <InlineMathWrapper key={`inline-${inlineIndex}`}>
+                    <InlineMath math={inlineMathContent} />
+                  </InlineMathWrapper>
+                );
+              }
+              return inlinePart;
+            });
+          }
+          return part;
+        });
+        return processedBlock;
+      };
+
+      const processedChildren = children.map(children, child => {
+        if (typeof child === 'string') {
+          return processText(child);
+        }
+        return child;
+      });
+
       const containsBlockElements = node.content.some(
         item =>
           item.nodeType === 'embedded-asset-block' || (item.marks && item.marks.some(mark => mark.type === 'code'))
       );
 
       if (containsBlockElements) {
-        return <div className="rich-text-block">{children}</div>;
+        return <div className="rich-text-block">{processedChildren}</div>;
       }
 
-      return <RichTextParagraph>{children}</RichTextParagraph>;
+      return <RichTextParagraph>{processedChildren}</RichTextParagraph>;
     },
     [BLOCKS.HEADING_2]: (node, children) => <RichTextH2>{children}</RichTextH2>,
     [BLOCKS.HEADING_3]: (node, children) => <RichTextH3>{children}</RichTextH3>,
@@ -285,7 +324,6 @@ const RichTextImage = styled.img`
         return `
           max-height: 300px;
         `;
-
       default: // medium
         return `
           max-height: 400px;
@@ -352,6 +390,26 @@ const EquationBlock = styled.div`
 
   .katex {
     font-size: 1.1em;
+  }
+`;
+
+// TO DO
+const InlineMathWrapper = styled.span`
+  display: inline-block;
+  text-align: left;
+  min-width: min-content;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+
+  .katex {
+    font-size: 1.1em;
+    text-align: left;
+  }
+
+  .katex-html {
+    text-align: left;
+    white-space: nowrap;
   }
 `;
 

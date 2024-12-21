@@ -57,30 +57,22 @@ const richTextOptions = {
       try {
         if (text.startsWith('\\ce{')) {
           return (
-            <div>
-              <EquationBlock>
-                <BlockMath math={text} />
-              </EquationBlock>
-            </div>
+            <EquationWrapper>
+              <BlockMath math={text} />
+            </EquationWrapper>
           );
         }
         if (text.includes('\\frac') || text.includes('^') || text.includes('_')) {
           return (
-            <div>
-              <EquationBlock>
-                <BlockMath math={text} />
-              </EquationBlock>
-            </div>
+            <EquationWrapper>
+              <BlockMath math={text} />
+            </EquationWrapper>
           );
         }
-        return <CodeBlock as="span">{text}</CodeBlock>;
+        return <CodeBlock>{text}</CodeBlock>;
       } catch (error) {
         console.error('LaTeX rendering error:', error);
-        return (
-          <div>
-            <ErrorBlock>Error rendering equation: {text}</ErrorBlock>
-          </div>
-        );
+        return <ErrorBlock>Error rendering equation: {text}</ErrorBlock>;
       }
     },
   },
@@ -94,9 +86,9 @@ const richTextOptions = {
           if (part.startsWith('$$') && part.endsWith('$$')) {
             const mathContent = part.slice(2, -2).trim();
             return (
-              <EquationBlock key={`block-${index}`}>
+              <EquationWrapper key={`block-${index}`}>
                 <BlockMath math={mathContent} />
-              </EquationBlock>
+              </EquationWrapper>
             );
           }
           if (!part.includes('$$')) {
@@ -125,23 +117,18 @@ const richTextOptions = {
             }
             return child;
           })
-        : Array.from(children).map(child => {
-            if (typeof child === 'string') {
-              return processText(child);
-            }
-            return child;
-          });
+        : children;
 
       const containsBlockElements = node.content.some(
         item =>
           item.nodeType === 'embedded-asset-block' || (item.marks && item.marks.some(mark => mark.type === 'code'))
       );
 
-      if (containsBlockElements) {
-        return <div className="rich-text-block">{processedChildren}</div>;
-      }
-
-      return <RichTextParagraph>{processedChildren}</RichTextParagraph>;
+      return containsBlockElements ? (
+        <RichTextBlock>{processedChildren}</RichTextBlock>
+      ) : (
+        <RichTextParagraph>{processedChildren}</RichTextParagraph>
+      );
     },
     [BLOCKS.HEADING_2]: (node, children) => <RichTextH2>{children}</RichTextH2>,
     [BLOCKS.HEADING_3]: (node, children) => <RichTextH3>{children}</RichTextH3>,
@@ -166,18 +153,20 @@ const richTextOptions = {
           imageSize = 'xsmall';
         } else if (lowercaseDesc.includes('small')) {
           imageSize = 'small';
-        } else if (lowercaseDesc.includes('medium')) {
-          imageSize = 'medium';
+        } else if (lowercaseDesc.includes('vertical')) {
+          imageSize = 'vertical';
+        } else if (lowercaseDesc.includes('horizontal')) {
+          imageSize = 'horizontal';
         }
       }
 
       return (
-        <div className="rich-text-asset">
+        <RichTextAsset>
           <RichTextImageWrapper $size={imageSize}>
             <RichTextImage src={`https:${file.url}`} alt={title || 'Article image'} $size={imageSize} />
           </RichTextImageWrapper>
           {title && <ImageLabel>{title}</ImageLabel>}
-        </div>
+        </RichTextAsset>
       );
     },
   },
@@ -294,7 +283,6 @@ const RichTextImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin: 2rem auto;
-  objectfit: cover;
   width: auto;
   max-width: ${props => {
     switch (props.$size) {
@@ -304,6 +292,10 @@ const RichTextImageWrapper = styled.div`
         return '200px';
       case 'small':
         return '400px';
+      case 'vertical':
+        return '400px';
+      case 'horizontal':
+        return '900px';
       default:
         return '600px';
     }
@@ -320,21 +312,17 @@ const RichTextImage = styled.img`
   ${props => {
     switch (props.$size) {
       case 'large':
-        return `
-          max-height: 600px;
-        `;
+        return `max-height: 620px;`;
       case 'xsmall':
-        return `
-          max-height: 200px;
-        `;
+        return `max-height: 200px;`;
       case 'small':
-        return `
-          max-height: 300px;
-        `;
-      default: // medium
-        return `
-          max-height: 400px;
-        `;
+        return `max-height: 300px;`;
+      case 'vertical':
+        return `max-height: 900px;`;
+      case 'horizontal':
+        return `max-height: 400px;`;
+      default:
+        return `max-height: 400px;`;
     }
   }}
 
@@ -352,7 +340,11 @@ const ImageLabel = styled.label`
   font-style: italic;
 `;
 
-const RichTextParagraph = styled.p`
+const RichTextBlock = styled.div`
+  margin: 1.5rem 0;
+`;
+
+const RichTextParagraph = styled.div`
   margin: 1.5rem 0;
   line-height: 1.8;
   font-size: 1.1rem;
@@ -385,7 +377,7 @@ const RichTextLi = styled.li`
   line-height: 1.6;
 `;
 
-const EquationBlock = styled.div`
+const EquationWrapper = styled.div`
   margin: 1rem 0;
   padding: 0.5rem;
   border-radius: 8px;
@@ -400,24 +392,17 @@ const EquationBlock = styled.div`
   }
 `;
 
-// TO DO
 const InlineMathWrapper = styled.span`
-  display: inline-block;
-  text-align: left;
-  min-width: min-content;
-  margin: 0;
-  padding: 0;
+  display: inline;
   vertical-align: baseline;
 
   .katex {
     font-size: 1.1em;
-    text-align: left;
   }
+`;
 
-  .katex-html {
-    text-align: left;
-    white-space: nowrap;
-  }
+const RichTextAsset = styled.div`
+  margin: 2rem 0;
 `;
 
 const CodeBlock = styled.code`

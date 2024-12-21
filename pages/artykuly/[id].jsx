@@ -118,12 +118,19 @@ const richTextOptions = {
         return processedBlock;
       };
 
-      const processedChildren = children.map(children, child => {
-        if (typeof child === 'string') {
-          return processText(child);
-        }
-        return child;
-      });
+      const processedChildren = Array.isArray(children)
+        ? children.map(child => {
+            if (typeof child === 'string') {
+              return processText(child);
+            }
+            return child;
+          })
+        : Array.from(children).map(child => {
+            if (typeof child === 'string') {
+              return processText(child);
+            }
+            return child;
+          });
 
       const containsBlockElements = node.content.some(
         item =>

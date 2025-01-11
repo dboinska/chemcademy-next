@@ -262,6 +262,8 @@ const ArticleContent = styled.article`
   padding: 0 1rem;
   line-height: 1.8;
   font-size: 1.1rem;
+  overflow: hidden;
+  max-width: 100%;
 `;
 
 const MainImage = styled.img`

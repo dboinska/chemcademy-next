@@ -8,6 +8,7 @@ import SEO from '../../src/components/SEO';
 import Container from '../../src/components/Container';
 import { H2Section } from '../../src/components/headers';
 import client from '../../contentful';
+import { profanityFilter } from '../../src/utils/profanityFilter';
 
 export async function getStaticPaths() {
   try {
@@ -169,6 +170,10 @@ const richTextOptions = {
         </RichTextAsset>
       );
     },
+  },
+  renderText: text => {
+    const validatedText = profanityFilter(text);
+    return !validatedText ? 'Treść zablokowana' : text;
   },
 };
 

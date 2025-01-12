@@ -3,6 +3,7 @@ import SEO from '../../src/components/SEO';
 import Container from '../../src/components/Container';
 import { H2Section } from '../../src/components/headers';
 import Resource from '../../src/sections/Resource';
+import { profanityFilter } from '../../src/utils/profanityFilter';
 
 import client from '../../contentful';
 import { useRouter } from 'next/router';
@@ -13,9 +14,19 @@ export async function getStaticProps() {
       content_type: 'chemcademy',
     });
 
+    const filteredArticles = response.items.filter(article => {
+      const { header, category, preview } = article.fields;
+
+      const validatedHeader = profanityFilter(header);
+      const validatedCategory = profanityFilter(category);
+      const validatedPreview = profanityFilter(preview);
+
+      return validatedCategory && validatedHeader && validatedPreview;
+    });
+
     return {
       props: {
-        articles: response.items,
+        articles: filteredArticles,
       },
       revalidate: 60,
     };

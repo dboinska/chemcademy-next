@@ -69,6 +69,7 @@ const divStyles = css`
 const StyledFlex = styled.div`
   display: flex;
   justify-content: space-between;
+  gap: 16px;
 `;
 
 const StyledDate = styled.span`
@@ -79,7 +80,6 @@ const StyledCategory = styled.span`
   background-color: var(--chem-color-light-gray);
   border-radius: 8px;
   padding: 4px 8px;
-  margin-bottom: 8px;
   text-transform: uppercase;
   font-size: 12px;
 `;

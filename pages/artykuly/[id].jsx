@@ -206,7 +206,11 @@ const ResourcePage = ({ article }) => {
                 <PublicationDate>{publicationDate}</PublicationDate>
               </StyledFlex>
             </ArticleMetadata>
-            <MainImage src={mainImage.fields.file.url} alt={mainImage.fields.title} />
+            <MainImage
+              src={mainImage.fields.file.url}
+              alt={mainImage.fields.title}
+              style={mainImage.fields.title.includes('-contain') ? { objectFit: 'contain' } : {}}
+            />
             {introduction && <StyledParagraph>{introduction}</StyledParagraph>}
           </ArticleHeader>
           <ArticleContent>{documentToReactComponents(mainContent, richTextOptions)}</ArticleContent>
@@ -237,7 +241,7 @@ const ArticleMetadata = styled.div`
 
 const Category = styled.span`
   background-color: var(--chem-color-light-gray);
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   border-radius: 4px;
   font-size: 0.875rem;
 `;
@@ -277,6 +281,9 @@ const MainImage = styled.img`
   border-radius: 12px;
   object-fit: cover;
   margin-bottom: 3rem;
+  @media (min-width: 768px) {
+    height: 260px;
+  }
 `;
 
 const LoadingMessage = styled.p`

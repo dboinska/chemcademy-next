@@ -2,18 +2,9 @@ import styled, { css } from 'styled-components';
 import Image from 'next/image';
 import { H3Section } from '../components/headers';
 import { MAX_SMALL_DEVICES, MIN_MEDIUM_DEVICES } from '../../styles/constants';
+import Link from 'next/link';
 
-const Resource = ({
-  articles,
-  imgPosition = 'left',
-  color,
-  content,
-  margin,
-  height,
-  width,
-  maxWidthOnSmall,
-  onClick,
-}) => {
+const Resource = ({ articles, imgPosition = 'left', color, content, margin, height, width, maxWidthOnSmall }) => {
   if (!articles || !articles.length) {
     return <div>Brak dostępnych materiałów</div>;
   }
@@ -21,43 +12,57 @@ const Resource = ({
   return (
     <>
       {articles.map(article => (
-        <StyledSection
-          key={article.sys.id}
-          color={color}
-          content={content}
-          margin={margin}
-          onClick={() => onClick(article.sys.id)}
-          role="article"
-          aria-labelledby={`article-header-${article.sys.id}`}
-        >
-          <StyledContainer imgPosition={imgPosition}>
-            <StyledFlex>
-              <StyledCategory>{article.fields.category}</StyledCategory>
-              <StyledDate>{new Date(article.sys.createdAt).toLocaleDateString()}</StyledDate>
-            </StyledFlex>
-            <H3Section padding="4px">{article.fields.header}</H3Section>
-            <StyledParagraph>{article.fields.preview}</StyledParagraph>
-          </StyledContainer>
-          {article.fields.mainImage && (
-            <StyledImageContainer
-              imgPosition={imgPosition}
-              height={height}
-              width={width}
-              maxWidthOnSmall={maxWidthOnSmall}
+        <Link key={article.sys.id} href={`/artykuly/${article.sys.id}`} passHref>
+          <StyledArticleLink>
+            <StyledSection
+              color={color}
+              content={content}
+              margin={margin}
+              role="article"
+              aria-labelledby={`article-header-${article.sys.id}`}
             >
-              <Image
-                src={`https:${article.fields.mainImage.fields.file.url}`}
-                alt={article.fields.mainImage.fields.title || article.fields.header}
-                layout="fill"
-                objectFit="cover"
-              />
-            </StyledImageContainer>
-          )}
-        </StyledSection>
+              <StyledContainer imgPosition={imgPosition}>
+                <StyledFlex>
+                  <StyledCategory>{article.fields.category}</StyledCategory>
+                  <StyledDate>{new Date(article.sys.createdAt).toLocaleDateString()}</StyledDate>
+                </StyledFlex>
+                <H3Section padding="4px" id={`article-header-${article.sys.id}`}>
+                  {article.fields.header}
+                </H3Section>
+                <StyledParagraph>{article.fields.preview}</StyledParagraph>
+              </StyledContainer>
+              {article.fields.mainImage && (
+                <StyledImageContainer
+                  imgPosition={imgPosition}
+                  height={height}
+                  width={width}
+                  maxWidthOnSmall={maxWidthOnSmall}
+                >
+                  <Image
+                    src={`https:${article.fields.mainImage.fields.file.url}`}
+                    alt={article.fields.mainImage.fields.title || article.fields.header}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </StyledImageContainer>
+              )}
+            </StyledSection>
+          </StyledArticleLink>
+        </Link>
       ))}
     </>
   );
 };
+
+const StyledArticleLink = styled.a`
+  text-decoration: none;
+  color: inherit;
+  display: block;
+
+  &:hover {
+    text-decoration: none;
+  }
+`;
 
 const divStyles = css`
   max-width: var(--chem-width-wide);
@@ -102,7 +107,6 @@ const StyledSection = styled.section`
   background-color: ${({ color }) => (color ? color : 'var(--chem-color-transparent)')};
   max-width: calc(100vw - 2rem);
   border-bottom: 3px solid var(--chem-color-light-blue);
-  display: flex;
   width: 100%;
   max-width: 1000px;
   cursor: pointer;

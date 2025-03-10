@@ -6,7 +6,6 @@ import Resource from '../../src/sections/Resource';
 import { profanityFilter } from '../../src/utils/profanityFilter';
 
 import client from '../../contentful';
-import { useRouter } from 'next/router';
 
 export async function getStaticProps() {
   try {
@@ -41,11 +40,6 @@ export async function getStaticProps() {
 }
 
 const Resources = ({ articles }) => {
-  const router = useRouter();
-
-  const handleArticleClick = articleSlug => {
-    router.push(`/artykuly/${articleSlug}`);
-  };
   console.log({ articles });
   return (
     <>
@@ -54,7 +48,7 @@ const Resources = ({ articles }) => {
         <StyledContainer>
           <H2Section margin="0 0 3rem 0">Artykuły</H2Section>
         </StyledContainer>
-        <Resource width="300px" height="200px" articles={articles} onClick={handleArticleClick} />
+        <Resource width="300px" height="200px" maxWidthOnSmall="268px" articles={articles} />
       </Container>
     </>
   );

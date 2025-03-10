@@ -209,7 +209,7 @@ const ResourcePage = ({ article }) => {
             <MainImage
               src={mainImage.fields.file.url}
               alt={mainImage.fields.title}
-              style={mainImage.fields.title.includes('-contain') ? { objectFit: 'contain' } : {}}
+              style={mainImage.fields.description?.includes('contain') ? { objectFit: 'contain' } : {}}
             />
             {introduction && <StyledParagraph>{introduction}</StyledParagraph>}
           </ArticleHeader>

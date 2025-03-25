@@ -2,13 +2,12 @@ import styled from 'styled-components';
 import { H2Section } from '../components/headers';
 import Image from 'next/image';
 import { H3Badges } from '../components/headers';
+import { MIN_LARGE_DEVICES } from '../../styles/constants';
 
 const Badges = ({ items, children, color, textAlign, fontWeight }) => {
   return (
-    <>
-      <StyledContainer>
-        <H2Section>{children}</H2Section>
-      </StyledContainer>
+    <StyledContainer>
+      <H2Section>{children}</H2Section>
       <StyledOffered color={color} textAlign={textAlign} fontWeight={fontWeight}>
         {items.map(item => (
           <div key={item.id}>
@@ -20,21 +19,23 @@ const Badges = ({ items, children, color, textAlign, fontWeight }) => {
           </div>
         ))}
       </StyledOffered>
-    </>
+    </StyledContainer>
   );
 };
 
-const StyledContainer = styled.div`
+const StyledContainer = styled.section`
   max-width: 80%;
   margin: 0 auto;
+  ${MIN_LARGE_DEVICES} {
+    max-width: 1200px;
+  }
 `;
 
-const StyledOffered = styled.section`
+const StyledOffered = styled.div`
   margin: 3rem 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 1100px;
   margin: 0 auto;
 
   div {
